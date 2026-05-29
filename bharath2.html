@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoCoders | Engineering Digital Success</title>
+    <meta name="description" content="GeoCoders builds high-performance websites, web applications, mobile apps, AI-powered solutions, and custom software that help businesses grow faster.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandPrimary: '#0066FF',
+                        brandSecondary: '#00C2FF',
+                        darkBg: '#0A0F1C',
+                        cardBg: '#121826',
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #0A0F1C; color: #FFFFFF; }
+        .glass {
+            background: rgba(18, 24, 38, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #FFFFFF 0%, #A3B3D5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .accent-gradient {
+            background: linear-gradient(135deg, #0066FF 0%, #00C2FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gradient {
+            background: linear-gradient(135deg, #0066FF 0%, #00C2FF 100%);
+        }
+        .glow-effect:hover {
+            box-shadow: 0 0 30px rgba(0, 194, 255, 0.15);
+            border-color: rgba(0, 194, 255, 0.3);
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.05); }
+        }
+        .animate-pulse-glow { animation: pulseGlow 8s infinite ease-in-out; }
+    </style>
+</head>
+<body class="overflow-x-hidden antialiased">
+
+    <a href="https://wa.me/919964255418" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white text-2xl shadow-2xl hover:scale-110 transition-transform duration-300 group" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp group-hover:rotate-12 transition-transform"></i>
+        <span class="absolute right-16 bg-cardBg text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/10 shadow-xl font-medium">WhatsApp Support</span>
+    </a>
+
+    <nav class="fixed top-0 left-0 w-full z-40 glass border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 font-extrabold text-xl tracking-tight group">
+                <div class="relative flex items-center justify-center text-2xl h-8 w-8">
+                    <i class="fa-solid fa-globe absolute left-0 text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-slate-400 w-1/2 overflow-hidden"></i>
+                    <i class="fa-solid fa-globe absolute right-0 text-transparent bg-clip-text bg-gradient-to-r from-brandSecondary to-brandSecondary w-1/2 overflow-hidden origin-right"></i>
+                    <i class="fa-solid fa-globe opacity-0"></i>
+                </div>
+                <span class="bg-gradient-to-r from-white to-slate-300 text-transparent bg-clip-text">GeoCoders</span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
+                <a href="#about" class="hover:text-white transition-colors">About Us</a>
+                <a href="#services" class="hover:text-white transition-colors">Services</a>
+                <a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a>
+                <a href="#process" class="hover:text-white transition-colors">Process</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+            </div>
+            <a href="#contact" class="hidden sm:inline-flex btn-gradient text-white text-xs font-semibold uppercase tracking-wider px-5 py-2.5 rounded-md hover:opacity-90 transition-opacity">
+                Get Consultation
+            </a>
+        </div>
+    </nav>
+
+    <header class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden px-6">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brandPrimary/10 rounded-full blur-[150px] pointer-events-none animate-pulse-glow"></div>
+        <div class="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] bg-brandSecondary/5 rounded-full blur-[120px] pointer-events-none animate-pulse-glow" style="animation-delay: -3s;"></div>
+
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
+            <div class="lg:col-span-7 space-y-8 text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-white/10 text-xs font-medium text-brandSecondary uppercase tracking-widest">
+                    <span class="flex h-2 w-2 rounded-full bg-brandSecondary animate-ping"></span> Enterprise Software Solutions
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none text-gradient">
+                    Engineering Digital <br><span class="bg-gradient-to-r from-brandPrimary to-brandSecondary text-transparent bg-clip-text">Success</span>
+                </h1>
+                <p class="text-slate-400 text-base sm:text-lg max-w-xl leading-relaxed">
+                    GeoCoders builds high-performance websites, web applications, mobile apps, AI-powered solutions, and custom software that help businesses grow faster.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#portfolio" class="btn-gradient text-white font-semibold text-sm px-8 py-4 rounded-md shadow-lg shadow-brandPrimary/20 hover:opacity-90 transition-all transform hover:-translate-y-0.5">
+                        View Portfolio
+                    </a>
+                    <a href="#contact" class="glass text-white border border-white/10 font-semibold text-sm px-8 py-4 rounded-md hover:bg-white/5 transition-all transform hover:-translate-y-0.5">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 hidden lg:block">
+                <div class="glass border border-white/10 rounded-xl p-6 shadow-2xl font-mono text-xs text-slate-300 relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full bg-white/5 px-4 py-2 flex items-center justify-between border-b border-white/5">
+                        <div class="flex gap-1.5">
+                            <span class="w-3 h-3 rounded-full bg-red-500/70 block"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500/70 block"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500/70 block"></span>
+                        </div>
+                        <span class="text-[10px] text-slate-500">geocoders-engine.js</span>
+                    </div>
+                    <div class="mt-6 space-y-3 pt-2">
+                        <p class="text-slate-500">// Initialize digital transformation</p>
+                        <p><span class="text-brandSecondary">const</span> company = <span class="text-amber-400">"GeoCoders"</span>;</p>
+                        <p><span class="text-brandSecondary">let</span> coreCapacities = [</p>
+                        <p class="pl-4 text-emerald-400">"Web Apps", "Mobile Architectures",</p>
+                        <p class="pl-4 text-emerald-400">"AI Agents", "Cloud Solutions"</p>
+                        <p class="pl-2">];</p>
+                        <p><span class="text-brandSecondary">function</span> buildSuccess(idea) {</p>
+                        <p class="pl-4 text-purple-400">return transform(idea).toScalableProduct();</p>
+                        <p class="pl-2">}</p>
+                        <p class="text-brandPrimary font-bold animate-pulse">&gt; Initializing systems... Active</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="py-32 px-6 relative border-t border-white/5 bg-gradient-to-b from-darkBg to-[#0D1426]">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-12 gap-16 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <h2 class="text-xs uppercase tracking-[0.25em] font-bold text-brandSecondary">Who We Are</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-gradient leading-tight">
+                        Transforming bold ideas into high-performance digital products.
+                    </h3>
+                    <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                        GeoCoders transforms ideas into scalable digital products through innovation, design excellence, and powerful engineering. We build secure, modern, and high-performance software solutions for startups, enterprises, and government organizations.
+                    </p>
+                </div>
+                
+                <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+                    <div class="glass p-6 rounded-xl border border-white/5 text-left glow-effect transition-all duration-300">
+                        <p class="text-3xl font-extrabold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">150+</p>
+                        <p class="text-xs text-brandSecondary font-semibold uppercase tracking-wider mt-1">Projects Delivered</p>
+                    </div>
+                    <div class="glass p-6 rounded-xl border border-white/5 text-left glow-effect transition-all duration-300">
+                        <p class="text-3xl font-extrabold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">99%</p>
+                        <p class="text-xs text-brandSecondary font-semibold uppercase tracking-wider mt-1">Happy Clients</p>
+                    </div>
+                    <div class="glass p-6 rounded-xl border border-white/5 text-left glow-effect transition-all duration-300">
+                        <p class="text-3xl font-extrabold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">25+</p>
+                        <p class="text-xs text-brandSecondary font-semibold uppercase tracking-wider mt-1">Technologies Used</p>
+                    </div>
+                    <div class="glass p-6 rounded-xl border border-white/5 text-left glow-effect transition-all duration-300">
+                        <p class="text-3xl font-extrabold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">24/7</p>
+                        <p class="text-xs text-brandSecondary font-semibold uppercase tracking-wider mt-1">Support Availability</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-32 px-6 bg-darkBg relative">
+        <div class="max-w-7xl mx-auto text-center space-y-4 mb-20">
+            <h2 class="text-xs uppercase tracking-[0.25em] font-bold text-brandSecondary">Our Services</h2>
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-gradient">Elite Capabilities, Engineered for Growth</h3>
+            <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">We provide full-scale digital engineering services designed to meet modern technological challenges.</p>
+        </div>
+
+        <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="glass p-8 rounded-xl border border-white/5 glow-effect transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-lg bg-brandPrimary/10 border border-brandPrimary/20 flex items-center justify-center text-brandSecondary text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-3">Website Development</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Stunning, lightning-fast corporate web identities engineered for performance, reach, and structural security.</p>
+                </div>
+            </div>
+            <div class="glass p-8 rounded-xl border border-white/5 glow-effect transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-lg bg-brandPrimary/10 border border-brandPrimary/20 flex items-center justify-center text-brandSecondary text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-cubes"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-3">Web Applications</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Complex, highly functional enterprise web software solutions running seamlessly on robust modern architectures.</p>
+                </div>
+            </div>
+            <div class="glass p-8 rounded-xl border border-white/5 glow-effect transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-lg bg-brandPrimary/10 border border-brandPrimary/20 flex items-center justify-center text-brandSecondary text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-3">Mobile App Development</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Immersive, high-performance hybrid and native mobile apps crafted meticulously for iOS and Android environments.</p>
+                </div>
+            </div>
+            <div class="glass p-8 rounded-xl border border-white/5 glow-effect transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-lg bg-brandPrimary/10 border border-brandPrimary/20 flex items-center justify-center text-brandSecondary text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-compass-drafting"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-3">UI/UX Design</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Strategic, data-driven experience systems built around your consumer paths to skyrocket product stickiness.</p>
+                </div>
+            </div>
+            <div class="glass p-8 rounded-xl border border-white/5 glow-effect transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-lg bg-brandPrimary/10 border border-brandPrimary/20 flex items-center justify-center text-brandSecondary text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-3">AI & Automation Solutions</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Intelligent integrations, tailored data pipelines, LLM fine-tuning, and robotic workflows minimizing human bottlenecks.</p>
+                </div>
+            </div>
+            <div class="glass p-8 rounded-xl border border-white/5 glow-effect transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-lg bg-brandPrimary/10 border border-brandPrimary/20 flex items-center justify-center text-brandSecondary text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-terminal"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-3">Custom Software Development</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Tailored, robust backbones optimized completely to power the niche internal logistical workflows of your firm.</p>
+                </div>
+            </div>
+            <div class="glass p-8 rounded-xl border border-white/5 glow-effect transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-lg bg-brandPrimary/10 border border-brandPrimary/20 flex items-center justify-center text-brandSecondary text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-cloud"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-3">Cloud Solutions</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Highly responsive serverless scaling infrastructures built cleanly on distributed international hosting webs.</p>
+                </div>
+            </div>
+            <div class="glass p-8 rounded-xl border border-white/5 glow-effect transition-all duration-300 flex flex-col justify-between group">
+                <div>
+                    <div class="w-12 h-12 rounded-lg bg-brandPrimary/10 border border-brandPrimary/20 flex items-center justify-center text-brandSecondary text-xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-link"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-3">API Development</h4>
+                    <p class="text-xs text-slate-400 leading-relaxed">Bulletproof programmatic gateways that integrate and exchange payload assets efficiently with security layers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-32 px-6 bg-gradient-to-b from-darkBg to-[#0A101E]">
+        <div class="max-w-7xl mx-auto space-y-4 mb-16 text-left">
+            <h2 class="text-xs uppercase tracking-[0.25em] font-bold text-brandSecondary">Our Projects</h2>
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-gradient">Proven Delivery Across Scales</h3>
+            <p class="text-slate-400 max-w-2xl text-sm sm:text-base">
+                From government digital platforms to AI-powered business solutions, GeoCoders delivers scalable, secure, and impactful technology products across multiple industries.
+            </p>
+        </div>
+
+        <div class="max-w-7xl mx-auto mb-12 flex flex-wrap gap-2 text-xs">
+            <button onclick="filterPortfolio('all')" class="portfolio-filter-btn px-5 py-2.5 rounded-full border border-white/10 text-white font-medium bg-brandPrimary transition-all">All Projects</button>
+            <button onclick="filterPortfolio('government')" class="portfolio-filter-btn px-5 py-2.5 rounded-full border border-white/10 text-slate-400 font-medium hover:text-white transition-all">Government</button>
+            <button onclick="filterPortfolio('ai')" class="portfolio-filter-btn px-5 py-2.5 rounded-full border border-white/10 text-slate-400 font-medium hover:text-white transition-all">AI & Automation</button>
+            <button onclick="filterPortfolio('webapp')" class="portfolio-filter-btn px-5 py-2.5 rounded-full border border-white/10 text-slate-400 font-medium hover:text-white transition-all">Web Applications</button>
+            <button onclick="filterPortfolio('corporate')" class="portfolio-filter-btn px-5 py-2.5 rounded-full border border-white/10 text-slate-400 font-medium hover:text-white transition-all">Corporate Websites</button>
+            <button onclick="filterPortfolio('events')" class="portfolio-filter-btn px-5 py-2.5 rounded-full border border-white/10 text-slate-400 font-medium hover:text-white transition-all">Event Platforms</button>
+        </div>
+
+        <div class="max-w-7xl mx-auto space-y-8">
+            <div class="portfolio-item-card glass p-8 sm:p-12 rounded-2xl border border-white/10 grid lg:grid-cols-12 gap-8 items-center" data-category="government">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded text-xs font-bold text-brandSecondary uppercase">
+                        <i class="fa-solid fa-building-flag"></i> Government Platform
+                    </div>
+                    <h4 class="text-2xl sm:text-3xl font-extrabold text-white">Karnataka Varthe Portal</h4>
+                    <p class="text-xs uppercase tracking-wider font-semibold text-brandSecondary">Client: Government of Karnataka</p>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        A government news and information portal designed for the Department of Information and Public Relations, Government of Karnataka. The platform publishes official news, district updates, videos, magazines, and public information for citizens across the state.
+                    </p>
+                    <div class="grid grid-cols-2 gap-x-6 gap-y-3 text-xs text-slate-300">
+                        <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> Government News Portal</div>
+                        <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> District Publishing</div>
+                        <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> Video Management</div>
+                        <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> Secure Administration</div>
+                    </div>
+                    <div class="pt-4">
+                        <a href="https://varthe.karnataka.gov.in/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 btn-gradient text-white text-xs font-bold uppercase tracking-wider px-6 py-3 rounded hover:opacity-90 transition-opacity">
+                            View Project <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 hidden lg:block bg-gradient-to-br from-cardBg to-darkBg h-64 rounded-xl border border-white/5 flex items-center justify-center p-8 text-center relative overflow-hidden">
+                    <i class="fa-solid fa-shield-halved text-8xl text-white/5 absolute -right-4 -bottom-4"></i>
+                    <span class="font-mono text-xs text-slate-500 tracking-widest uppercase">Production System Infrastructure</span>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="portfolio-item-card glass p-8 rounded-xl border border-white/5 flex flex-col justify-between space-y-6" data-category="events">
+                    <div class="space-y-4">
+                        <h4 class="text-xl font-bold text-white">Arunachal Film Festival Platform</h4>
+                        <p class="text-xs uppercase tracking-wider font-semibold text-brandSecondary">Event Management Platform</p>
+                        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                            A digital platform developed for managing film festival registrations, event participation, festival schedules, and public engagement.
+                        </p>
+                        <div class="space-y-2 pt-2 text-xs text-slate-300">
+                            <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> Online Registration</div>
+                            <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> Participant Dashboard</div>
+                            <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> Mobile Responsive Design</div>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="https://arunachalfilmfestival.gully2global.in/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-white/10 hover:border-brandSecondary text-white text-xs font-bold uppercase tracking-wider px-5 py-3 rounded transition-all">
+                            View Project <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item-card glass p-8 rounded-xl border border-white/5 flex flex-col justify-between space-y-6" data-category="corporate">
+                    <div class="space-y-4">
+                        <h4 class="text-xl font-bold text-white">TopRise</h4>
+                        <p class="text-xs uppercase tracking-wider font-semibold text-brandSecondary">Corporate Business Website</p>
+                        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                            A professional corporate website developed to strengthen brand presence, showcase services, and generate business leads through a modern digital experience.
+                        </p>
+                        <div class="space-y-2 pt-2 text-xs text-slate-300">
+                            <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> Corporate Branding System</div>
+                            <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> High Conversion Leads</div>
+                            <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> Enterprise Search Optimization</div>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="https://toprise.in/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-white/10 hover:border-brandSecondary text-white text-xs font-bold uppercase tracking-wider px-5 py-3 rounded transition-all">
+                            View Project <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item-card glass p-8 rounded-xl border border-white/5 flex flex-col justify-between space-y-6" data-category="ai">
+                    <div class="space-y-4">
+                        <h4 class="text-xl font-bold text-white">VoizPanda AI</h4>
+                        <p class="text-xs uppercase tracking-wider font-semibold text-brandSecondary">Artificial Intelligence Platform</p>
+                        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                            An AI-powered workforce platform offering virtual AI employees for HR, Sales, Support, and Reception operations. The platform automates customer interactions, lead qualification, appointment booking, and business workflows.
+                        </p>
+                        <div class="space-y-2 pt-2 text-xs text-slate-300">
+                            <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> Virtual AI Employees</div>
+                            <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> Live Voice AI Technology</div>
+                            <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> Real-time Analytics Dashboard</div>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="https://voizpanda.ai/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-white/10 hover:border-brandSecondary text-white text-xs font-bold uppercase tracking-wider px-5 py-3 rounded transition-all">
+                            View Project <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item-card glass p-8 rounded-xl border border-white/5 flex flex-col justify-between space-y-6" data-category="events">
+                    <div class="space-y-4">
+                        <h4 class="text-xl font-bold text-white">YFSI Event Platform</h4>
+                        <p class="text-xs uppercase tracking-wider font-semibold text-brandSecondary">Event Registration System</p>
+                        <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                            A web-based event registration and management platform designed for large-scale youth and cultural programs, enabling participant onboarding, scheduling, and administration.
+                        </p>
+                        <div class="space-y-2 pt-2 text-xs text-slate-300">
+                            <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> High Capacity Registration</div>
+                            <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> Dashboard Reporting</div>
+                            <div class="flex items-center gap-2"><i class="fa-regular fa-circle-check text-brandSecondary"></i> Advanced Admin Controls</div>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="https://yfsiuat1.gully2global.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 border border-white/10 hover:border-brandSecondary text-white text-xs font-bold uppercase tracking-wider px-5 py-3 rounded transition-all">
+                            View Project <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6 bg-darkBg text-center relative overflow-hidden">
+        <div class="max-w-7xl mx-auto space-y-4 mb-20">
+            <h2 class="text-xs uppercase tracking-[0.25em] font-bold text-brandSecondary">Tech Stack</h2>
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-gradient">Architectures Built to Endure</h3>
+        </div>
+
+        <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
+            <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-white/5 hover:border-brandSecondary/40 transition-colors">
+                <i class="fa-brands fa-html5 text-2xl text-orange-500"></i><span class="text-[11px] font-semibold text-slate-300">HTML5</span>
+            </div>
+            <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-white/5 hover:border-brandSecondary/40 transition-colors">
+                <i class="fa-brands fa-css3-alt text-2xl text-blue-500"></i><span class="text-[11px] font-semibold text-slate-300">CSS3</span>
+            </div>
+            <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-white/5 hover:border-brandSecondary/40 transition-colors">
+                <i class="fa-brands fa-js text-2xl text-yellow-400"></i><span class="text-[11px] font-semibold text-slate-300">JavaScript</span>
+            </div>
+            <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-white/5 hover:border-brandSecondary/40 transition-colors">
+                <i class="fa-brands fa-react text-2xl text-cyan-400"></i><span class="text-[11px] font-semibold text-slate-300">React</span>
+            </div>
+            <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-white/5 hover:border-brandSecondary/40 transition-colors">
+                <i class="fa-solid fa-n text-2xl text-white"></i><span class="text-[11px] font-semibold text-slate-300">Next.js</span>
+            </div>
+            <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-white/5 hover:border-brandSecondary/40 transition-colors">
+                <i class="fa-brands fa-node-js text-2xl text-green-500"></i><span class="text-[11px] font-semibold text-slate-300">Node.js</span>
+            </div>
+            <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-white/5 hover:border-brandSecondary/40 transition-colors">
+                <i class="fa-brands fa-python text-2xl text-yellow-500"></i><span class="text-[11px] font-semibold text-slate-300">Python</span>
+            </div>
+            <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-white/5 hover:border-brandSecondary/40 transition-colors">
+                <i class="fa-solid fa-feather-pointed text-2xl text-sky-400"></i><span class="text-[11px] font-semibold text-slate-300">Flutter</span>
+            </div>
+            <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-white/5 hover:border-brandSecondary/40 transition-colors">
+                <i class="fa-solid fa-database text-2xl text-emerald-500"></i><span class="text-[11px] font-semibold text-slate-300">MongoDB</span>
+            </div>
+            <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-white/5 hover:border-brandSecondary/40 transition-colors">
+                <i class="fa-solid fa-server text-2xl text-indigo-400"></i><span class="text-[11px] font-semibold text-slate-300">PostgreSQL</span>
+            </div>
+            <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-white/5 hover:border-brandSecondary/40 transition-colors">
+                <i class="fa-solid fa-fire text-2xl text-orange-400"></i><span class="text-[11px] font-semibold text-slate-300">Firebase</span>
+            </div>
+            <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-white/5 hover:border-brandSecondary/40 transition-colors">
+                <i class="fa-brands fa-aws text-2xl text-amber-500"></i><span class="text-[11px] font-semibold text-slate-300">AWS</span>
+            </div>
+            <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-white/5 hover:border-brandSecondary/40 transition-colors">
+                <i class="fa-brands fa-docker text-2xl text-blue-400"></i><span class="text-[11px] font-semibold text-slate-300">Docker</span>
+            </div>
+            <div class="glass p-4 rounded-xl flex flex-col items-center justify-center gap-2 border border-white/5 hover:border-brandSecondary/40 transition-colors">
+                <i class="fa-brands fa-git-alt text-2xl text-red-500"></i><span class="text-[11px] font-semibold text-slate-300">Git</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="py-32 px-6 bg-gradient-to-b from-darkBg to-[#0A101E] relative">
+        <div class="max-w-7xl mx-auto text-center space-y-4 mb-24">
+            <h2 class="text-xs uppercase tracking-[0.25em] font-bold text-brandSecondary">The Roadmap</h2>
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-gradient">Our Technical Development Blueprint</h3>
+        </div>
+
+        <div class="max-w-4xl mx-auto relative border-l-2 border-white/5 space-y-12 pl-6 sm:pl-10">
+            <div class="relative group">
+                <span class="absolute -left-[31px] sm:-left-[47px] top-0 w-4 h-4 rounded-full bg-brandPrimary group-hover:scale-125 transition-transform border-4 border-darkBg"></span>
+                <h4 class="text-lg font-bold text-white">01. Discovery</h4>
+                <p class="text-xs sm:text-sm text-slate-400 max-w-2xl mt-2 leading-relaxed">Deep analysis of scope, parameters, business logic layers, user criteria, and technical ecosystem demands.</p>
+            </div>
+            <div class="relative group">
+                <span class="absolute -left-[31px] sm:-left-[47px] top-0 w-4 h-4 rounded-full bg-brandPrimary group-hover:scale-125 transition-transform border-4 border-darkBg"></span>
+                <h4 class="text-lg font-bold text-white">02. Planning</h4>
+                <p class="text-xs sm:text-sm text-slate-400 max-w-2xl mt-2 leading-relaxed">Architecture plotting, selecting proper technology configurations, resource allocations, and defining tight milestone pathways.</p>
+            </div>
+            <div class="relative group">
+                <span class="absolute -left-[31px] sm:-left-[47px] top-0 w-4 h-4 rounded-full bg-brandPrimary group-hover:scale-125 transition-transform border-4 border-darkBg"></span>
+                <h4 class="text-lg font-bold text-white">03. UI/UX Design</h4>
+                <p class="text-xs sm:text-sm text-slate-400 max-w-2xl mt-2 leading-relaxed">High fidelity systemic prototyping, interactive asset layouts, and strict execution of target-market aesthetic priorities.</p>
+            </div>
+            <div class="relative group">
+                <span class="absolute -left-[31px] sm:-left-[47px] top-0 w-4 h-4 rounded-full bg-brandPrimary group-hover:scale-125 transition-transform border-4 border-darkBg"></span>
+                <h4 class="text-lg font-bold text-white">04. Development</h4>
+                <p class="text-xs sm:text-sm text-slate-400 max-w-2xl mt-2 leading-relaxed">Clean script compilation, microservice construction, data payload orchestration, and integration of system features.</p>
+            </div>
+            <div class="relative group">
+                <span class="absolute -left-[31px] sm:-left-[47px] top-0 w-4 h-4 rounded-full bg-brandPrimary group-hover:scale-125 transition-transform border-4 border-darkBg"></span>
+                <h4 class="text-lg font-bold text-white">05. Testing</h4>
+                <p class="text-xs sm:text-sm text-slate-400 max-w-2xl mt-2 leading-relaxed">Rigorous multi-environment staging execution, vulnerability evaluations, benchmark optimization, and compatibility profiling.</p>
+            </div>
+            <div class="relative group">
+                <span class="absolute -left-[31px] sm:-left-[47px] top-0 w-4 h-4 rounded-full bg-brandPrimary group-hover:scale-125 transition-transform border-4 border-darkBg"></span>
+                <h4 class="text-lg font-bold text-white">06. Deployment</h4>
+                <p class="text-xs sm:text-sm text-slate-400 max-w-2xl mt-2 leading-relaxed">Production distribution, optimization of distributed container spaces, DNS structuring, and live monitoring initialization.</p>
+            </div>
+            <div class="relative group">
+                <span class="absolute -left-[31px] sm:-left-[47px] top-0 w-4 h-4 rounded-full bg-brandPrimary group-hover:scale-125 transition-transform border-4 border-darkBg"></span>
+                <h4 class="text-lg font-bold text-white">07. Maintenance & Support</h4>
+                <p class="text-xs sm:text-sm text-slate-400 max-w-2xl mt-2 leading-relaxed">Ongoing real-time updates, security patching, core optimization routines, and proactive continuous system scale maintenance.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-6 bg-darkBg text-center relative">
+        <div class="max-w-7xl mx-auto space-y-4 mb-20">
+            <h2 class="text-xs uppercase tracking-[0.25em] font-bold text-brandSecondary">Our Edge</h2>
+            <h3 class="text-3xl sm:text-4xl font-extrabold text-gradient">Why Enterprises Rely On Us</h3>
+        </div>
+
+        <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+            <div class="glass p-6 rounded-xl border border-white/5 space-y-3 hover:border-brandPrimary/30 transition-all duration-300">
+                <i class="fa-solid fa-bolt text-2xl text-brandSecondary"></i>
+                <h4 class="text-base font-bold text-white">Fast Delivery</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">Agile scrum processes ensuring software deployment within projected time frames without sacrificing quality.</p>
+            </div>
+            <div class="glass p-6 rounded-xl border border-white/5 space-y-3 hover:border-brandPrimary/30 transition-all duration-300">
+                <i class="fa-solid fa-layer-group text-2xl text-brandSecondary"></i>
+                <h4 class="text-base font-bold text-white">Modern Technology Stack</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">Utilizing robust, secure, and production-tested tools to maximize software efficiency and lifetime relevance.</p>
+            </div>
+            <div class="glass p-6 rounded-xl border border-white/5 space-y-3 hover:border-brandPrimary/30 transition-all duration-300">
+                <i class="fa-solid fa-arrow-up-right-dots text-2xl text-brandSecondary"></i>
+                <h4 class="text-base font-bold text-white">Scalable Architecture</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">Database models and processing configurations structured cleanly to manage exponential load spikes effortlessly.</p>
+            </div>
+            <div class="glass p-6 rounded-xl border border-white/5 space-y-3 hover:border-brandPrimary/30 transition-all duration-300">
+                <i class="fa-solid fa-hand-holding-dollar text-2xl text-brandSecondary"></i>
+                <h4 class="text-base font-bold text-white">Affordable Solutions</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">Value-driven allocation of project engineering pipelines to provide enterprise-grade code within budget.</p>
+            </div>
+            <div class="glass p-6 rounded-xl border border-white/5 space-y-3 hover:border-brandPrimary/30 transition-all duration-300">
+                <i class="fa-solid fa-headset text-2xl text-brandSecondary"></i>
+                <h4 class="text-base font-bold text-white">Dedicated Support</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">Constant availability of certified operations professionals to guide infrastructure adjustments in real time.</p>
+            </div>
+            <div class="glass p-6 rounded-xl border border-white/5 space-y-3 hover:border-brandPrimary/30 transition-all duration-300">
+                <i class="fa-solid fa-shield-check text-2xl text-brandSecondary"></i>
+                <h4 class="text-base font-bold text-white">Quality Assurance</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">Rigorous validation frameworks minimizing code regressions and optimizing performance across edge environments.</p>
+            </div>
+            <div class="glass p-6 rounded-xl border border-white/5 space-y-3 hover:border-brandPrimary/30 transition-all duration-300">
+                <i class="fa-solid fa-comments text-2xl text-brandSecondary"></i>
+                <h4 class="text-base font-bold text-white">Transparent Communication</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">Regular structural feedback and clear, non-technical project health parameters accessible round the clock.</p>
+            </div>
+            <div class="glass p-6 rounded-xl border border-white/5 space-y-3 hover:border-brandPrimary/30 transition-all duration-300">
+                <i class="fa-solid fa-handshake text-2xl text-brandSecondary"></i>
+                <h4 class="text-base font-bold text-white">Long-Term Partnership</h4>
+                <p class="text-xs text-slate-400 leading-relaxed">A core organizational layout optimized to support your continuous growth strategy post software launch.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-32 px-6 bg-gradient-to-b from-darkBg to-[#0B1120]">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-16 items-start">
+            <div class="lg:col-span-5 space-y-6">
+                <h2 class="text-xs uppercase tracking-[0.25em] font-bold text-brandSecondary">Connect With Us</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-gradient leading-tight">Let's Build Something Amazing Together</h3>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                    Have a project idea? Reach out directly and let's discuss how GeoCoders can help bring it to life.
+                </p>
+                <div class="p-6 glass rounded-xl border border-white/5 space-y-3 text-xs">
+                    <p class="font-bold text-white uppercase tracking-wider"><i class="fa-regular fa-clock text-brandSecondary mr-1"></i> Business Hours</p>
+                    <p class="text-slate-400">Monday – Saturday: 9:00 AM – 7:00 PM IST</p>
+                    <div class="pt-2 border-t border-white/5 space-y-1 text-slate-400">
+                        <p><strong class="text-white">WhatsApp Response:</strong> Usually within 1 hour</p>
+                        <p><strong class="text-white">Email Response:</strong> Within 24 hours</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 grid sm:grid-cols-3 gap-4 w-full">
+                <div class="glass p-6 rounded-xl border border-white/5 text-center flex flex-col justify-between items-center group shadow-xl">
+                    <div class="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center text-brandSecondary text-xl mb-4"><i class="fa-solid fa-phone"></i></div>
+                    <h4 class="text-sm font-bold text-white mb-2">Call Us</h4>
+                    <p class="text-[11px] text-slate-400 mb-6">Speak directly regarding your requirements.</p>
+                    <a href="tel:+919964255418" class="w-full btn-gradient text-white text-[11px] font-bold uppercase tracking-wider py-2.5 rounded hover:opacity-90 transition-opacity">Call Now</a>
+                </div>
+                <div class="glass p-6 rounded-xl border border-white/5 text-center flex flex-col justify-between items-center group shadow-xl">
+                    <div class="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-xl mb-4"><i class="fa-brands fa-whatsapp"></i></div>
+                    <h4 class="text-sm font-bold text-white mb-2">WhatsApp</h4>
+                    <p class="text-[11px] text-slate-400 mb-6">Get immediate project consultations.</p>
+                    <a href="https://wa.me/919964255418" target="_blank" rel="noopener noreferrer" class="w-full bg-[#25D366] text-white text-[11px] font-bold uppercase tracking-wider py-2.5 rounded hover:opacity-90 transition-opacity">Chat Now</a>
+                </div>
+                <div class="glass p-6 rounded-xl border border-white/5 text-center flex flex-col justify-between items-center group shadow-xl">
+                    <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-400 text-xl mb-4"><i class="fa-regular fa-envelope"></i></div>
+                    <h4 class="text-sm font-bold text-white mb-2">Email</h4>
+                    <p class="text-[11px] text-slate-400 mb-6">Submit business requirements lists.</p>
+                    <a href="mailto:geocoders0@gmail.com" class="w-full bg-purple-600 text-white text-[11px] font-bold uppercase tracking-wider py-2.5 rounded hover:bg-purple-500 transition-colors">Send Email</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-gradient-to-r from-brandPrimary/20 to-brandSecondary/5 text-center border-y border-white/5 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto space-y-6 relative z-10">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-gradient">Ready to Start Your Project?</h2>
+            <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">Let's turn your ideas into powerful digital solutions.</p>
+            <div class="flex flex-wrap justify-center gap-4 pt-4">
+                <a href="tel:+919964255418" class="btn-gradient text-white text-xs font-bold uppercase tracking-widest px-8 py-4 rounded hover:opacity-90 transition-all transform hover:-translate-y-0.5">Call Now</a>
+                <a href="https://wa.me/919964255418" target="_blank" rel="noopener noreferrer" class="bg-[#25D366] text-white text-xs font-bold uppercase tracking-widest px-8 py-4 rounded hover:opacity-90 transition-all transform hover:-translate-y-0.5">WhatsApp Us</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#050811] py-16 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-12 gap-10 items-start text-left">
+            <div class="lg:col-span-5 space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="relative flex items-center justify-center text-2xl h-8 w-8">
+                        <i class="fa-solid fa-globe absolute left-0 text-transparent bg-clip-text bg-gradient-to-r from-slate-400 to-slate-400 w-1/2 overflow-hidden"></i>
+                        <i class="fa-solid fa-globe absolute right-0 text-transparent bg-clip-text bg-gradient-to-r from-brandSecondary to-brandSecondary w-1/2 overflow-hidden origin-right"></i>
+                        <i class="fa-solid fa-globe opacity-0"></i>
+                    </div>
+                    <h3 class="font-extrabold text-lg bg-gradient-to-r from-white to-slate-300 text-transparent bg-clip-text">GeoCoders</h3>
+                </div>
+                <p class="text-xs text-slate-400 italic">GeoCoders — Engineering Digital Success</p>
+                <p class="text-xs text-slate-500 max-w-sm leading-relaxed">Designing, compiling, optimizing and scaling elite high-value computational assets for digital enterprise transformation ecosystems.</p>
+            </div>
+            
+            <div class="lg:col-span-2 space-y-3">
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider">Navigation</h4>
+                <div class="flex flex-col gap-2 text-xs text-slate-400">
+                    <a href="#about" class="hover:text-white transition-colors">About Us</a>
+                    <a href="#services" class="hover:text-white transition-colors">Services</a>
+                    <a href="#portfolio" class="hover:text-white transition-colors">Portfolio</a>
+                    <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 space-y-3">
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider">Services</h4>
+                <div class="flex flex-col gap-2 text-xs text-slate-400">
+                    <a href="#services" class="hover:text-white transition-colors">Web Apps</a>
+                    <a href="#services" class="hover:text-white transition-colors">Mobile Engineering</a>
+                    <a href="#services" class="hover:text-white transition-colors">AI & Automation</a>
+                    <a href="#services" class="hover:text-white transition-colors">Cloud Solutions</a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-3 space-y-3 text-xs">
+                <h4 class="text-xs font-bold text-white uppercase tracking-wider">Contact Info</h4>
+                <p class="text-slate-400 leading-relaxed">
+                    <strong class="text-white">Email:</strong> geocoders0@gmail.com<br>
+                    <strong class="text-white">Phone:</strong> +91 99642 55418
+                </p>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto border-t border-white/5 mt-12 pt-6 text-center text-[11px] text-slate-600 uppercase tracking-widest">
+            &copy; 2026 GeoCoders. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        function filterPortfolio(category) {
+            const buttons = document.querySelectorAll('.portfolio-filter-btn');
+            buttons.forEach(btn => {
+                if(btn.textContent.toLowerCase().includes(category) || (category === 'all' && btn.textContent.toLowerCase().includes('all'))) {
+                    btn.classList.add('bg-brandPrimary', 'text-white');
+                    btn.classList.remove('text-slate-400');
+                } else {
+                    btn.classList.remove('bg-brandPrimary', 'text-white');
+                    btn.classList.add('text-slate-400');
+                }
+            });
+
+            const items = document.querySelectorAll('.portfolio-item-card');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'grid';
+                    if(!item.classList.contains('grid') && !item.classList.contains('md:flex')) {
+                        item.style.display = 'flex';
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
